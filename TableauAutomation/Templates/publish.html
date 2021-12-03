@@ -1,0 +1,42 @@
+{% extends 'landing.html' %}
+{% block content%}
+<form method="POST" action="/published" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="container">
+   <div> 
+    <div class="row">
+        <div class="col-sm-4">
+            <div>
+                <input type="file" id ="txt_file" name ="txt_file" class="form-control" webkitdirectory mozdirectory msdirectory odirectory directory multiple/>
+            </div>
+        </div>
+        <div class="col-sm-2">
+                <div>
+                    <select id ="sel_prj" name ="sel_prj" class="form-control">
+                        <option value="">--select--</option>
+                        {% for prj in projects %}
+                        <option value={{prj.id}}>{{prj.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+        </div>
+        <div class="col-sm-2">
+                <div>
+                    <button  id ="btn_add" class="btn btn-success">ADD</button>
+                </div>
+        </div> 
+        
+        <div class="col-sm-4">
+
+        </div>     
+    </div>
+    <br>
+    <div class="row">
+            <div>
+               <button class="btn btn-info" type="submit">Publish</button> 
+            </div>
+        </div>
+   </div> 
+</div>
+</form>
+{% endblock %}
